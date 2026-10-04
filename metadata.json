@@ -2,5 +2,7 @@
   "name": "Thamarapalli Gowtham | Full-Stack Developer & AI/ML Engineer",
   "description": "Personal portfolio website of Thamarapalli Gowtham, 2nd-year B.Tech CSE (AI & ML) student at Marwadi University and aspiring Full-Stack Developer & AI/ML Engineer.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

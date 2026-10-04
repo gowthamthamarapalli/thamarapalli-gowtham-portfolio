@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData.ts';
+import ThemeToggle from './ThemeToggle.tsx';
 
 interface NavbarProps {
   onOpenDeployGuide?: () => void;
@@ -57,7 +58,7 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? 'bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/20'
+          ? 'bg-white/90 dark:bg-slate-950/85 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 shadow-sm dark:shadow-black/20'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -66,18 +67,18 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
         <a
           href="#hero"
           onClick={(e) => handleLinkClick(e, '#hero')}
-          className="text-lg font-bold tracking-tight text-white flex items-center gap-2 group"
+          className="text-lg font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 group"
         >
-          <span className="w-8 h-8 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-xs font-mono font-semibold text-indigo-400 group-hover:border-indigo-400 transition-colors">
+          <span className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-600/20 border border-indigo-200 dark:border-indigo-500/30 flex items-center justify-center text-xs font-mono font-semibold text-indigo-600 dark:text-indigo-400 group-hover:border-indigo-400 transition-colors">
             {PERSONAL_INFO.initials}
           </span>
-          <span className="font-semibold text-slate-100 group-hover:text-white transition-colors">
+          <span className="font-semibold text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-white transition-colors">
             {PERSONAL_INFO.shortName}
           </span>
         </a>
 
         {/* Zone 2: Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-medium text-slate-400">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-medium">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
@@ -87,8 +88,8 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
                 onClick={(e) => handleLinkClick(e, link.href)}
                 className={`px-3 py-1.5 rounded-md transition-colors whitespace-nowrap ${
                   isActive
-                    ? 'text-white bg-slate-800/60 font-semibold'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
+                    ? 'text-indigo-600 dark:text-white bg-indigo-50 dark:bg-slate-800/60 font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900/40'
                 }`}
               >
                 {link.label}
@@ -98,22 +99,25 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
         </nav>
 
         {/* Zone 3: Primary Actions */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-2.5">
           {onOpenDeployGuide && (
             <button
               onClick={onOpenDeployGuide}
-              className="text-xs font-mono text-slate-400 hover:text-indigo-300 transition-colors px-2.5 py-1.5 rounded border border-slate-800 hover:border-slate-700 bg-slate-900/40"
+              className="text-xs font-mono text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors px-2.5 py-1.5 rounded border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-slate-100/70 dark:bg-slate-900/40"
               title="Vercel & Git deployment guide"
             >
               Deploy Guide
             </button>
           )}
 
+          {/* Theme Toggle Button */}
+          <ThemeToggle />
+
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-xs font-medium px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700/80 text-slate-200 hover:text-white hover:border-slate-600 hover:bg-slate-800/80 transition-all whitespace-nowrap"
+            className="flex items-center gap-1 text-xs font-medium px-3.5 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all whitespace-nowrap"
           >
             GitHub
             <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
@@ -128,8 +132,10 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
           </a>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <div className="flex sm:hidden items-center gap-2">
+        {/* Mobile Hamburger Button + Theme Toggle */}
+        <div className="flex sm:hidden items-center gap-1.5">
+          <ThemeToggle />
+
           <a
             href="#contact"
             onClick={(e) => handleLinkClick(e, '#contact')}
@@ -137,9 +143,10 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
           >
             Contact
           </a>
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
             aria-label="Toggle Navigation Menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -150,8 +157,8 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 px-5 pt-3 pb-6 space-y-1 shadow-2xl">
-          <div className="grid grid-cols-2 gap-1 mb-4">
+        <div className="lg:hidden bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 px-5 pt-3 pb-6 space-y-2 shadow-2xl">
+          <div className="grid grid-cols-2 gap-1.5 mb-3">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -161,8 +168,8 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
                   onClick={(e) => handleLinkClick(e, link.href)}
                   className={`px-3 py-2 text-sm rounded-lg transition-colors ${
                     isActive
-                      ? 'text-white bg-indigo-600/20 font-semibold border border-indigo-500/30'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-900'
+                      ? 'text-indigo-600 dark:text-white bg-indigo-50 dark:bg-indigo-600/20 font-semibold border border-indigo-200 dark:border-indigo-500/30'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-900'
                   }`}
                 >
                   {link.label}
@@ -171,28 +178,32 @@ export default function Navbar({ onOpenDeployGuide }: NavbarProps) {
             })}
           </div>
 
-          <div className="pt-3 border-t border-slate-800 flex flex-col gap-2">
-            <a
-              href={PERSONAL_INFO.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 text-sm font-medium py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-200"
-            >
-              View GitHub Profile
-              <ArrowUpRight className="w-4 h-4 text-slate-400" />
-            </a>
+          <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+            <ThemeToggle showLabel={true} className="w-full justify-center py-2.5" />
 
-            {onOpenDeployGuide && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenDeployGuide();
-                }}
-                className="w-full text-xs font-mono py-2 rounded-lg text-slate-400 hover:text-slate-200 border border-slate-800/80 bg-slate-900/50"
+            <div className="flex gap-2">
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 text-xs font-medium py-2 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200"
               >
-                Vercel & Git Deployment Guide
-              </button>
-            )}
+                GitHub
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+
+              {onOpenDeployGuide && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenDeployGuide();
+                  }}
+                  className="flex-1 text-xs font-mono text-slate-600 dark:text-slate-400 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60"
+                >
+                  Deploy Guide
+                </button>
+              )}
+            </div>
           </div>
         </div>
       )}

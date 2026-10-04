@@ -7,13 +7,13 @@ export default function Certifications() {
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="text-xs font-semibold tracking-wider text-indigo-400 uppercase mb-2">
+          <div className="text-xs font-semibold tracking-wider text-indigo-600 dark:text-indigo-400 uppercase mb-2">
             Continuous Learning & Credentials
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-3">
             Certifications
           </h2>
-          <p className="text-sm text-slate-400 max-w-xl mx-auto">
+          <p className="text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
             Verified course certifications completed to deepen technical knowledge and programming proficiency.
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function Certifications() {
             return (
               <div
                 key={cert.id}
-                className="relative rounded-2xl bg-slate-900/60 hover:bg-slate-900/90 border border-slate-800/90 hover:border-indigo-500/40 p-6 sm:p-7 backdrop-blur-sm transition-all duration-200 flex flex-col justify-between group shadow-lg"
+                className="relative rounded-2xl bg-white/90 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900/90 border border-slate-200 dark:border-slate-800/90 hover:border-indigo-400 dark:hover:border-indigo-500/40 p-6 sm:p-7 backdrop-blur-sm transition-all duration-200 flex flex-col justify-between group shadow-xs dark:shadow-lg"
               >
                 <div>
                   {/* Top Bar: Issuer & Verified Emblem */}
@@ -35,8 +35,8 @@ export default function Certifications() {
                       <div
                         className={`w-11 h-11 rounded-xl flex items-center justify-center border shrink-0 ${
                           isCisco
-                            ? 'bg-sky-950/80 border-sky-500/30 text-sky-400'
-                            : 'bg-amber-950/80 border-amber-500/30 text-amber-400'
+                            ? 'bg-sky-50 dark:bg-sky-950/80 border-sky-200 dark:border-sky-500/30 text-sky-600 dark:text-sky-400'
+                            : 'bg-amber-50 dark:bg-amber-950/80 border-amber-200 dark:border-amber-500/30 text-amber-700 dark:text-amber-400'
                         }`}
                       >
                         {isCisco ? (
@@ -47,39 +47,39 @@ export default function Certifications() {
                       </div>
 
                       <div>
-                        <span className="text-xs font-medium text-slate-400">
+                        <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
                           {cert.issuer}
                         </span>
-                        <div className="text-[11px] text-slate-500 font-mono">
+                        <div className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
                           Official Curriculum
                         </div>
                       </div>
                     </div>
 
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-950/70 border border-emerald-500/30 text-[11px] font-medium text-emerald-300">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-500/30 text-[11px] font-medium text-emerald-800 dark:text-emerald-300">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                       <span>Certified</span>
                     </span>
                   </div>
 
                   {/* Certification Title */}
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-200 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-200 transition-colors">
                     {cert.title}
                   </h3>
 
                   {/* Description / Focus Area */}
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                     {cert.focusArea}
                   </p>
                 </div>
 
                 {/* Footer details */}
-                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
-                  <div className="flex items-center gap-1.5 text-slate-400">
-                    <BookmarkCheck className="w-3.5 h-3.5 text-indigo-400" />
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
+                  <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
+                    <BookmarkCheck className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                     <span>Skill Verification</span>
                   </div>
-                  <span className="text-[11px] font-mono text-slate-500">
+                  <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
                     {cert.issuer}
                   </span>
                 </div>
@@ -89,7 +89,7 @@ export default function Certifications() {
         </div>
 
         {/* Future Certifications Placeholder */}
-        <div className="mt-8 text-center text-xs text-slate-500">
+        <div className="mt-8 text-center text-xs text-slate-500 dark:text-slate-500">
           Currently pursuing additional specialized certifications in Full-Stack Web Development and Deep Learning.
         </div>
       </div>

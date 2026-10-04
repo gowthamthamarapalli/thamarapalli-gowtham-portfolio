@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext.tsx';
 
 export default function TechBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -51,6 +53,10 @@ export default function TechBackground() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
+      const isDark = document.documentElement.classList.contains('dark');
+      const strokeBase = isDark ? '99, 102, 241' : '79, 70, 229';
+      const particleBase = isDark ? '129, 140, 248' : '99, 102, 241';
+
       // Draw subtle connections
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
@@ -71,11 +77,11 @@ export default function TechBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 130) {
-            const lineAlpha = (1 - dist / 130) * 0.12;
+            const lineAlpha = (1 - dist / 130) * (isDark ? 0.12 : 0.08);
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(99, 102, 241, ${lineAlpha})`;
+            ctx.strokeStyle = `rgba(${strokeBase}, ${lineAlpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -84,7 +90,7 @@ export default function TechBackground() {
         // Draw particle node
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(129, 140, 248, ${p1.alpha})`;
+        ctx.fillStyle = `rgba(${particleBase}, ${p1.alpha * (isDark ? 1 : 0.7)})`;
         ctx.fill();
       }
 
@@ -99,18 +105,36 @@ export default function TechBackground() {
     };
   }, []);
 
+  const isDark = theme === 'dark';
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
       {/* Ambient background glows */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl" />
-      <div className="absolute top-1/3 -right-40 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl" />
+      <div
+        className={`absolute -top-40 -left-40 w-96 h-96 rounded-full blur-3xl transition-colors duration-500 ${
+          isDark ? 'bg-indigo-600/10' : 'bg-indigo-400/10'
+        }`}
+      />
+      <div
+        className={`absolute top-1/3 -right-40 w-96 h-96 rounded-full blur-3xl transition-colors duration-500 ${
+          isDark ? 'bg-cyan-600/10' : 'bg-sky-400/10'
+        }`}
+      />
+      <div
+        className={`absolute -bottom-40 left-1/3 w-96 h-96 rounded-full blur-3xl transition-colors duration-500 ${
+          isDark ? 'bg-violet-600/10' : 'bg-purple-400/10'
+        }`}
+      />
 
       {/* Grid pattern overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className={`absolute inset-0 transition-opacity duration-300 ${
+          isDark ? 'opacity-[0.03]' : 'opacity-[0.035]'
+        }`}
         style={{
-          backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(to right, #fff 1px, transparent 1px)`,
+          backgroundImage: isDark
+            ? `linear-gradient(#fff 1px, transparent 1px), linear-gradient(to right, #fff 1px, transparent 1px)`
+            : `linear-gradient(#0f172a 1px, transparent 1px), linear-gradient(to right, #0f172a 1px, transparent 1px)`,
           backgroundSize: '48px 48px',
         }}
       />

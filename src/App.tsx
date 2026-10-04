@@ -11,38 +11,41 @@ import Contact from './components/Contact.tsx';
 import Footer from './components/Footer.tsx';
 import TechBackground from './components/TechBackground.tsx';
 import VercelDeployGuideModal from './components/VercelDeployGuideModal.tsx';
+import { ThemeProvider } from './context/ThemeContext.tsx';
 
 export default function App() {
   const [deployGuideOpen, setDeployGuideOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col relative selection:bg-indigo-500/30 selection:text-indigo-200">
-      {/* Subtle tech ambient background canvas & grid */}
-      <TechBackground />
+    <ThemeProvider>
+      <div className="min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 flex flex-col relative selection:bg-indigo-500/30 selection:text-indigo-600 dark:selection:text-indigo-200 transition-colors duration-250">
+        {/* Subtle tech ambient background canvas & grid */}
+        <TechBackground />
 
-      {/* Sticky top navigation bar */}
-      <Navbar onOpenDeployGuide={() => setDeployGuideOpen(true)} />
+        {/* Sticky top navigation bar */}
+        <Navbar onOpenDeployGuide={() => setDeployGuideOpen(true)} />
 
-      {/* Main content sections */}
-      <main className="flex-1 w-full">
-        <Hero />
-        <About />
-        <Skills />
-        <Education />
-        <Projects />
-        <Certifications />
-        <CareerGoals />
-        <Contact />
-      </main>
+        {/* Main content sections */}
+        <main className="flex-1 w-full">
+          <Hero />
+          <About />
+          <Skills />
+          <Education />
+          <Projects />
+          <Certifications />
+          <CareerGoals />
+          <Contact />
+        </main>
 
-      {/* Clean footer */}
-      <Footer onOpenDeployGuide={() => setDeployGuideOpen(true)} />
+        {/* Clean footer */}
+        <Footer onOpenDeployGuide={() => setDeployGuideOpen(true)} />
 
-      {/* Vercel & GitHub deployment guide modal */}
-      <VercelDeployGuideModal
-        isOpen={deployGuideOpen}
-        onClose={() => setDeployGuideOpen(false)}
-      />
-    </div>
+        {/* Vercel & GitHub deployment guide modal */}
+        <VercelDeployGuideModal
+          isOpen={deployGuideOpen}
+          onClose={() => setDeployGuideOpen(false)}
+        />
+      </div>
+    </ThemeProvider>
   );
 }

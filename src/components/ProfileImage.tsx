@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Camera, User } from 'lucide-react';
+import { Camera } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData.ts';
 
 interface ProfileImageProps {
@@ -32,7 +32,7 @@ export default function ProfileImage({
     <div className={`relative group/avatar shrink-0 select-none ${className}`}>
       {/* Outer border & shadow wrapper */}
       <div
-        className={`relative overflow-hidden bg-slate-900 border border-slate-700/80 shadow-xl transition-all duration-300 group-hover/avatar:border-indigo-500/60 ${sizeClasses[size]}`}
+        className={`relative overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 shadow-md dark:shadow-xl transition-all duration-300 group-hover/avatar:border-indigo-400 dark:group-hover/avatar:border-indigo-500/60 ${sizeClasses[size]}`}
       >
         {/* If image hasn't errored out, attempt to render the local file */}
         {!imageError && (
@@ -51,18 +51,18 @@ export default function ProfileImage({
         {/* Clean, styled placeholder when the image has not been uploaded yet or is loading */}
         {(!imageLoaded || imageError) && (
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-tr from-slate-950 via-slate-900 to-indigo-950/60 text-slate-200"
+            className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-tr from-slate-100 via-slate-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/60 text-slate-800 dark:text-slate-200"
             aria-label={altText}
           >
             {/* Glowing background gradient accent */}
             <div className="absolute inset-0 bg-radial from-indigo-500/10 to-transparent pointer-events-none" />
 
-            <span className="font-mono font-extrabold tracking-wider bg-gradient-to-r from-indigo-300 via-sky-200 to-white bg-clip-text text-transparent">
+            <span className="font-mono font-extrabold tracking-wider bg-gradient-to-r from-indigo-600 via-sky-600 to-indigo-500 dark:from-indigo-300 dark:via-sky-200 dark:to-white bg-clip-text text-transparent">
               {PERSONAL_INFO.initials}
             </span>
 
             {size !== 'sm' && (
-              <span className="text-[10px] text-indigo-400/80 font-mono mt-0.5 tracking-wider uppercase">
+              <span className="text-[10px] text-indigo-600 dark:text-indigo-400/80 font-mono mt-0.5 tracking-wider uppercase">
                 Profile
               </span>
             )}
@@ -73,8 +73,8 @@ export default function ProfileImage({
       {/* Subtle indicator for upload guide */}
       {showUploadHint && imageError && (
         <div className="mt-2.5 text-center">
-          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-400 bg-slate-900/90 border border-slate-800 px-2 py-0.5 rounded">
-            <Camera className="w-3 h-3 text-indigo-400" />
+          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 px-2 py-0.5 rounded shadow-xs">
+            <Camera className="w-3 h-3 text-indigo-500 dark:text-indigo-400" />
             <span>/assets/profile/profile.jpeg</span>
           </span>
         </div>
