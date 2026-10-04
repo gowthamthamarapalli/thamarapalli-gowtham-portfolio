@@ -99,7 +99,6 @@ export default function About() {
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover"
                         onError={() => {
-                          alert('Unable to load photo from URL, resetting to default.');
                           setCustomPhotoUrl(null);
                         }}
                       />

@@ -29,7 +29,7 @@ export default function VercelDeployGuideModal({
     {
       title: 'Step 2: Initialize Git & Push to GitHub',
       desc: 'Push your portfolio to your GitHub account (https://github.com/gowthamthamarapalli):',
-      commands: `git init\ngit add .\ngit commit -m "Initial commit: Thamarapalli Gowtham Portfolio"\ngit branch -M main\ngit remote add origin https://github.com/gowthamthamarapalli/gowtham-portfolio.git\ngit push -u origin main`,
+      commands: `git init\ngit add .\ngit commit -m "Initial commit: Thamarapalli Gowtham Portfolio"\ngit branch -M main\ngit remote add origin https://github.com/gowthamthamarapalli/thamarapalli-gowtham-portfolio.git\ngit push -u origin main`,
     },
     {
       title: 'Step 3: Deploy to Vercel (Free & Instant)',

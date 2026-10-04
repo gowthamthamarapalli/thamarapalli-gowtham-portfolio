@@ -12,8 +12,8 @@ Make sure you have [Node.js](https://nodejs.org/) installed (version 18 or newer
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/gowthamthamarapalli/gowtham-portfolio.git
-cd gowtham-portfolio
+git clone https://github.com/gowthamthamarapalli/thamarapalli-gowtham-portfolio.git
+cd thamarapalli-gowtham-portfolio
 
 # 2. Install dependencies
 npm install
@@ -50,15 +50,14 @@ git init
 # Stage all files
 git add .
 
-# Create your first commit
-git commit -m "Initial commit: Thamarapalli Gowtham portfolio"
+# Create your commit
+git commit -m "Fix dependency tree and verify Vite static build for Vercel"
 
 # Set main branch
 git branch -M main
 
 # Link to your remote GitHub repository
-# (Create a new empty repository on github.com first named 'gowtham-portfolio')
-git remote add origin https://github.com/gowthamthamarapalli/gowtham-portfolio.git
+git remote add origin https://github.com/gowthamthamarapalli/thamarapalli-gowtham-portfolio.git
 
 # Push your code
 git push -u origin main
@@ -66,19 +65,20 @@ git push -u origin main
 
 ---
 
-## 🌐 Deploying to Vercel (Step-by-Step)
+## 🌐 Deploying to Vercel (Zero-Config)
 
-This project includes a pre-configured `vercel.json` and standard Vite build scripts.
+This project is a 100% static React + Vite application. Vercel automatically detects Vite natively without any custom configuration or serverless functions.
 
-### Method 1: Using the Vercel Web Dashboard (Easiest)
+### Method 1: Using the Vercel Web Dashboard (Recommended)
 1. Go to [vercel.com](https://vercel.com/) and click **Sign Up** / **Log In** with your GitHub account.
 2. Click **Add New...** → **Project**.
-3. Select your `gowtham-portfolio` repository from your GitHub repository list and click **Import**.
-4. Vercel automatically configures:
+3. Select your `thamarapalli-gowtham-portfolio` repository and click **Import**.
+4. Vercel automatically detects:
    - **Framework Preset**: Vite
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
-5. Click **Deploy**. Your portfolio will be live on a free `*.vercel.app` domain in less than 60 seconds!
+   - **Install Command**: `npm install`
+5. Click **Deploy**. Your portfolio will build cleanly and deploy in under a minute!
 
 ### Method 2: Using the Vercel CLI
 ```bash
