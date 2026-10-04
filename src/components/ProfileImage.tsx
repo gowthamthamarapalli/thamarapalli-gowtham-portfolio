@@ -16,8 +16,8 @@ export default function ProfileImage({
   const [imageError, setImageError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  // Exact path requested: /assets/profile/profile.jpg
-  const imageSrc = PERSONAL_INFO.profileImagePath || '/assets/profile/profile.jpg';
+  // Exact path requested: /assets/profile/profile.jpeg
+  const imageSrc = PERSONAL_INFO.profileImagePath || '/assets/profile/profile.jpeg';
   const altText = 'Thamarapalli Gowtham profile photo';
 
   // Size preset helper
@@ -75,7 +75,7 @@ export default function ProfileImage({
         <div className="mt-2.5 text-center">
           <span className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-400 bg-slate-900/90 border border-slate-800 px-2 py-0.5 rounded">
             <Camera className="w-3 h-3 text-indigo-400" />
-            <span>/assets/profile/profile.jpg</span>
+            <span>/assets/profile/profile.jpeg</span>
           </span>
         </div>
       )}

@@ -115,7 +115,7 @@ export default function About() {
                     Upload your profile picture to:
                   </p>
                   <div className="p-2 rounded bg-slate-950 border border-slate-800 font-mono text-[11px] text-indigo-300 select-all">
-                    public/assets/profile/profile.jpg
+                    public/assets/profile/profile.jpeg
                   </div>
                   <p className="text-[11px] text-slate-400 leading-relaxed">
                     It will automatically appear in both the Hero and About Me sections with <code className="text-slate-300">object-fit: cover</code> and accessible alt text.

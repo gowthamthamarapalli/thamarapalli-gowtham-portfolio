@@ -20,7 +20,7 @@ export const PERSONAL_INFO = {
     'I am a 2nd year B.Tech student specializing in Computer Science and Engineering with Artificial Intelligence and Machine Learning. I am interested in web development and continuously learning programming and modern technologies. I enjoy creating websites and building projects that help me improve my technical skills. My goal is to become a skilled Full-Stack Developer and AI/ML Engineer.',
   email: 'gowthamthamarapalli27@gmail.com',
   github: 'https://github.com/gowthamthamarapalli',
-  profileImagePath: '/assets/profile/profile.jpg',
+  profileImagePath: '/assets/profile/profile.jpeg',
   careerGoalStatement:
     'My goal is to become a Full-Stack Developer while developing strong skills in Artificial Intelligence and Machine Learning.',
 };
