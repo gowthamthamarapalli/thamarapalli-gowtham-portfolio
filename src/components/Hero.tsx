@@ -1,5 +1,6 @@
 import { ArrowDown, Mail, FolderGit2, Sparkles, Terminal, Code, Cpu } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData.ts';
+import ProfileImage from './ProfileImage.tsx';
 
 export default function Hero() {
   const scrollTo = (id: string) => {
@@ -15,6 +16,11 @@ export default function Hero() {
       className="relative min-h-[90vh] flex flex-col justify-center items-center pt-24 pb-16 px-4 sm:px-6"
     >
       <div className="max-w-4xl mx-auto text-center relative z-10">
+        {/* Profile Photo / Avatar */}
+        <div className="flex justify-center mb-5">
+          <ProfileImage size="md" />
+        </div>
+
         {/* Subtle Tech Badge / Status */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-medium text-slate-300 mb-6 shadow-sm">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />

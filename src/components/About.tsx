@@ -7,28 +7,13 @@ import {
   Bot,
   Camera,
   Info,
-  Check,
   Code2,
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData.ts';
+import ProfileImage from './ProfileImage.tsx';
 
 export default function About() {
   const [showPhotoGuide, setShowPhotoGuide] = useState(false);
-  const [customPhotoUrl, setCustomPhotoUrl] = useState<string | null>(null);
-  const [photoInput, setPhotoInput] = useState('');
-
-  const handleApplyPhoto = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (photoInput.trim()) {
-      setCustomPhotoUrl(photoInput.trim());
-      setShowPhotoGuide(false);
-    }
-  };
-
-  const handleResetPhoto = () => {
-    setCustomPhotoUrl(null);
-    setPhotoInput('');
-  };
 
   const infoCards = [
     {
@@ -82,51 +67,24 @@ export default function About() {
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Photo / Avatar Placeholder (Clearly Marked) */}
+          {/* Left Column: Photo / Avatar Component */}
           <div className="lg:col-span-4 flex flex-col items-center">
             <div className="relative group w-64 sm:w-72">
               {/* Outer frame styling */}
               <div className="relative rounded-2xl p-1 bg-gradient-to-b from-indigo-500/30 via-slate-800 to-slate-900 shadow-2xl">
                 <div className="relative rounded-[14px] bg-slate-950 p-6 flex flex-col items-center text-center overflow-hidden min-h-[300px] justify-center">
                   {/* Background decoration */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/20 to-slate-900/50" />
-                  
-                  {customPhotoUrl ? (
-                    <div className="relative w-36 h-36 rounded-2xl overflow-hidden mb-4 border border-slate-700 shadow-md">
-                      <img
-                        src={customPhotoUrl}
-                        alt="Thamarapalli Gowtham Profile"
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover"
-                        onError={() => {
-                          setCustomPhotoUrl(null);
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    /* Clearly marked photo placeholder */
-                    <div className="relative mb-5 flex flex-col items-center">
-                      <div className="w-32 h-32 rounded-2xl bg-gradient-to-tr from-slate-900 via-indigo-950 to-slate-850 border border-indigo-500/30 flex flex-col items-center justify-center text-slate-300 shadow-inner group-hover:border-indigo-400/60 transition-colors">
-                        <span className="text-3xl font-extrabold tracking-wider bg-gradient-to-r from-indigo-300 via-sky-200 to-white bg-clip-text text-transparent font-mono">
-                          TG
-                        </span>
-                        <span className="text-[10px] text-indigo-400/80 font-mono mt-1">
-                          STUDENT PORTFOLIO
-                        </span>
-                      </div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/20 to-slate-900/50 pointer-events-none" />
 
-                      {/* Photo Placeholder Tag */}
-                      <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-indigo-950/80 border border-indigo-500/30 text-[11px] font-medium text-indigo-300">
-                        <Camera className="w-3 h-3 text-indigo-400" />
-                        <span>Profile Photo Placeholder</span>
-                      </div>
-                    </div>
-                  )}
+                  {/* Dedicated ProfileImage: /assets/profile/profile.jpg */}
+                  <div className="relative mb-4">
+                    <ProfileImage size="lg" />
+                  </div>
 
                   <h3 className="text-lg font-bold text-white mb-0.5">
                     {PERSONAL_INFO.name}
                   </h3>
-                  <p className="text-xs text-slate-400 mb-4">
+                  <p className="text-xs text-slate-400 mb-3">
                     Marwadi University, Rajkot
                   </p>
 
@@ -136,7 +94,7 @@ export default function About() {
                     className="inline-flex items-center gap-1.5 text-xs text-indigo-300 hover:text-white bg-slate-900/90 hover:bg-slate-800 border border-slate-800 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
                   >
                     <Info className="w-3.5 h-3.5" />
-                    <span>{customPhotoUrl ? 'Change Photo' : 'How to add your photo'}</span>
+                    <span>Profile Photo Location</span>
                   </button>
                 </div>
               </div>
@@ -145,7 +103,7 @@ export default function About() {
               {showPhotoGuide && (
                 <div className="mt-3 p-4 rounded-xl bg-slate-900 border border-indigo-500/40 text-xs text-slate-300 shadow-xl space-y-2">
                   <div className="font-semibold text-white flex items-center justify-between">
-                    <span>How to replace with your photo:</span>
+                    <span>Photo File Path:</span>
                     <button
                       onClick={() => setShowPhotoGuide(false)}
                       className="text-slate-400 hover:text-white"
@@ -154,35 +112,14 @@ export default function About() {
                     </button>
                   </div>
                   <p className="text-slate-400 leading-relaxed">
-                    <strong>Option 1 (Code):</strong> Save your photo as <code className="text-indigo-300 font-mono">public/profile.jpg</code> in your project repository.
+                    Upload your profile picture to:
                   </p>
-                  <p className="text-slate-400 leading-relaxed">
-                    <strong>Option 2 (Live Preview):</strong> Enter a direct image URL below to test:
+                  <div className="p-2 rounded bg-slate-950 border border-slate-800 font-mono text-[11px] text-indigo-300 select-all">
+                    public/assets/profile/profile.jpg
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    It will automatically appear in both the Hero and About Me sections with <code className="text-slate-300">object-fit: cover</code> and accessible alt text.
                   </p>
-                  <form onSubmit={handleApplyPhoto} className="flex gap-1.5 pt-1">
-                    <input
-                      type="url"
-                      placeholder="https://example.com/photo.jpg"
-                      value={photoInput}
-                      onChange={(e) => setPhotoInput(e.target.value)}
-                      className="flex-1 bg-slate-950 border border-slate-700 rounded px-2.5 py-1 text-xs text-white focus:outline-none focus:border-indigo-400"
-                    />
-                    <button
-                      type="submit"
-                      className="bg-indigo-600 hover:bg-indigo-500 text-white px-2.5 py-1 rounded text-xs font-medium cursor-pointer"
-                    >
-                      Apply
-                    </button>
-                  </form>
-                  {customPhotoUrl && (
-                    <button
-                      type="button"
-                      onClick={handleResetPhoto}
-                      className="text-[11px] text-red-400 hover:underline pt-1 block"
-                    >
-                      Reset to placeholder monogram
-                    </button>
-                  )}
                 </div>
               )}
             </div>

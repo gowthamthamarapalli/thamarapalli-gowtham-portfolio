@@ -91,8 +91,8 @@ vercel
 ## 🎨 How to Customize Your Portfolio
 
 ### 1. Adding Your Profile Photo
-- Place your photo inside the `public/` directory named `profile.jpg` (or any image format).
-- In `src/components/About.tsx`, you can set the image source directly or use the live interactive photo previewer right in the browser!
+- Place your photo file inside `public/assets/profile/` named `profile.jpg` (`public/assets/profile/profile.jpg`).
+- The portfolio automatically displays it in both the Hero and About Me sections with responsive cropping (`object-fit: cover`) and accessible alt text. If the file hasn't been added yet, a clean monogram placeholder is displayed automatically with zero broken layouts.
 
 ### 2. Updating Skills, Education, or Projects
 All portfolio content is neatly centralized in a single file:
