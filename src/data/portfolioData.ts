@@ -1,0 +1,463 @@
+import {
+  CertificationItem,
+  EducationInfo,
+  ProjectItem,
+  SkillItem,
+  CareerJourneyStep,
+} from '../types.ts';
+
+export const PERSONAL_INFO = {
+  name: 'Thamarapalli Gowtham',
+  shortName: 'Gowtham',
+  initials: 'TG',
+  title: 'B.Tech CSE (AI & ML) Student',
+  subtitles: [
+    'Aspiring Full-Stack Developer',
+    'Aspiring AI/ML Engineer',
+  ],
+  tagline: 'Building my skills, creating projects, and turning ideas into real-world applications.',
+  aboutMe:
+    'I am a 2nd year B.Tech student specializing in Computer Science and Engineering with Artificial Intelligence and Machine Learning. I am interested in web development and continuously learning programming and modern technologies. I enjoy creating websites and building projects that help me improve my technical skills. My goal is to become a skilled Full-Stack Developer and AI/ML Engineer.',
+  email: 'gowthamthamarapalli27@gmail.com',
+  github: 'https://github.com/gowthamthamarapalli',
+  careerGoalStatement:
+    'My goal is to become a Full-Stack Developer while developing strong skills in Artificial Intelligence and Machine Learning.',
+};
+
+export const ABOUT_CARDS = [
+  {
+    icon: 'GraduationCap',
+    title: 'B.Tech Student',
+    detail: '2nd Year Undergraduate',
+    gradient: 'from-blue-500/20 to-indigo-500/10',
+    borderColor: 'border-blue-500/30',
+  },
+  {
+    icon: 'Laptop',
+    title: 'CSE – AI & ML',
+    detail: 'Marwadi University',
+    gradient: 'from-cyan-500/20 to-blue-500/10',
+    borderColor: 'border-cyan-500/30',
+  },
+  {
+    icon: 'BarChart3',
+    title: 'CGPA: 8.5',
+    detail: 'Academic Performance',
+    gradient: 'from-emerald-500/20 to-teal-500/10',
+    borderColor: 'border-emerald-500/30',
+  },
+  {
+    icon: 'Rocket',
+    title: 'Aspiring Full-Stack Developer',
+    detail: 'Modern Web Engineering',
+    gradient: 'from-violet-500/20 to-purple-500/10',
+    borderColor: 'border-violet-500/30',
+  },
+  {
+    icon: 'Bot',
+    title: 'Aspiring AI/ML Engineer',
+    detail: 'Intelligent Systems Focus',
+    gradient: 'from-amber-500/20 to-orange-500/10',
+    borderColor: 'border-amber-500/30',
+  },
+];
+
+export const SKILLS_DATA: SkillItem[] = [
+  // 1. Programming Languages
+  {
+    id: 'c',
+    name: 'C',
+    category: 'languages',
+    categoryLabel: 'Programming Languages',
+    level: 'Familiar',
+    shortDescription: 'Core syntax, memory management & pointer fundamentals',
+    iconType: 'c',
+  },
+  {
+    id: 'cpp',
+    name: 'C++',
+    category: 'languages',
+    categoryLabel: 'Programming Languages',
+    level: 'Familiar',
+    shortDescription: 'Object-oriented programming, standard template library & problem solving',
+    iconType: 'cpp',
+  },
+  {
+    id: 'python',
+    name: 'Python',
+    category: 'languages',
+    categoryLabel: 'Programming Languages',
+    level: 'Intermediate',
+    shortDescription: 'Data structures, scripting, libraries & foundational AI workflows',
+    iconType: 'python',
+  },
+  {
+    id: 'javascript',
+    name: 'JavaScript',
+    category: 'languages',
+    categoryLabel: 'Programming Languages',
+    level: 'Familiar',
+    shortDescription: 'Modern ES6+ syntax, asynchronous programming & DOM manipulation',
+    iconType: 'javascript',
+  },
+
+  // 2. Web Development
+  {
+    id: 'html5',
+    name: 'HTML5',
+    category: 'web',
+    categoryLabel: 'Web Development',
+    level: 'Intermediate',
+    shortDescription: 'Semantic tags, accessible structure & web standards',
+    iconType: 'html5',
+  },
+  {
+    id: 'css3',
+    name: 'CSS3',
+    category: 'web',
+    categoryLabel: 'Web Development',
+    level: 'Intermediate',
+    shortDescription: 'Modern responsive styling, Flexbox, Grid, keyframe animations',
+    iconType: 'css3',
+  },
+  {
+    id: 'web-js',
+    name: 'JavaScript (Web)',
+    category: 'web',
+    categoryLabel: 'Web Development',
+    level: 'Familiar',
+    shortDescription: 'Interactive UI events, state handling & DOM manipulation',
+    iconType: 'javascript',
+  },
+  {
+    id: 'responsive-design',
+    name: 'Responsive Web Design',
+    category: 'web',
+    categoryLabel: 'Web Development',
+    level: 'Familiar',
+    shortDescription: 'Mobile-first layouts, fluid typography & cross-device compatibility',
+    iconType: 'responsive',
+  },
+  {
+    id: 'react',
+    name: 'React.js',
+    category: 'web',
+    categoryLabel: 'Web Development',
+    level: 'Learning',
+    isCurrentlyLearning: true,
+    shortDescription: 'Component architecture, JSX, hooks & reactive state management',
+    iconType: 'react',
+  },
+  {
+    id: 'nodejs',
+    name: 'Basic Node.js',
+    category: 'web',
+    categoryLabel: 'Web Development',
+    level: 'Beginner',
+    isCurrentlyLearning: true,
+    shortDescription: 'Server-side runtime, npm packages & basic event loops',
+    iconType: 'nodejs',
+  },
+  {
+    id: 'express',
+    name: 'Basic Express.js',
+    category: 'web',
+    categoryLabel: 'Web Development',
+    level: 'Beginner',
+    isCurrentlyLearning: true,
+    shortDescription: 'RESTful routing, middleware handling & API endpoint basics',
+    iconType: 'express',
+  },
+  {
+    id: 'fullstack-dev',
+    name: 'Full-Stack Development',
+    category: 'web',
+    categoryLabel: 'Web Development',
+    level: 'Learning',
+    isCurrentlyLearning: true,
+    shortDescription: 'Connecting client interfaces with server logic and storage',
+    iconType: 'fullstack',
+  },
+
+  // 3. Databases
+  {
+    id: 'sql',
+    name: 'SQL',
+    category: 'databases',
+    categoryLabel: 'Databases',
+    level: 'Familiar',
+    shortDescription: 'Data querying, table creation, joins, grouping & aggregations',
+    iconType: 'sql',
+  },
+  {
+    id: 'mysql',
+    name: 'MySQL',
+    category: 'databases',
+    categoryLabel: 'Databases',
+    level: 'Familiar',
+    shortDescription: 'Relational database schemas, primary/foreign keys & indexing',
+    iconType: 'mysql',
+  },
+  {
+    id: 'dbms',
+    name: 'DBMS',
+    category: 'databases',
+    categoryLabel: 'Databases',
+    level: 'Intermediate',
+    shortDescription: 'Relational algebra, normalization, ACID properties & ER diagrams',
+    iconType: 'dbms',
+  },
+  {
+    id: 'mongodb',
+    name: 'MongoDB',
+    category: 'databases',
+    categoryLabel: 'Databases',
+    level: 'Learning',
+    isCurrentlyLearning: true,
+    shortDescription: 'NoSQL document databases, collections, BSON & CRUD operations',
+    iconType: 'mongodb',
+  },
+
+  // 4. AI & Machine Learning
+  {
+    id: 'ai-fundamentals',
+    name: 'Artificial Intelligence Fundamentals',
+    category: 'aiml',
+    categoryLabel: 'AI & Machine Learning',
+    level: 'Learning',
+    shortDescription: 'Search algorithms, heuristic evaluation & intelligent agents',
+    iconType: 'ai',
+  },
+  {
+    id: 'ml-fundamentals',
+    name: 'Machine Learning Fundamentals',
+    category: 'aiml',
+    categoryLabel: 'AI & Machine Learning',
+    level: 'Learning',
+    isCurrentlyLearning: true,
+    shortDescription: 'Supervised vs unsupervised models, classification, regression & evaluation',
+    iconType: 'ml',
+  },
+  {
+    id: 'python-aiml',
+    name: 'Python for AI/ML',
+    category: 'aiml',
+    categoryLabel: 'AI & Machine Learning',
+    level: 'Familiar',
+    shortDescription: 'NumPy arrays, Pandas data manipulation & computational scripting',
+    iconType: 'python',
+  },
+  {
+    id: 'data-science-fundamentals',
+    name: 'Data Science Fundamentals',
+    category: 'aiml',
+    categoryLabel: 'AI & Machine Learning',
+    level: 'Beginner',
+    shortDescription: 'Data preprocessing, feature understanding & visualization basics',
+    iconType: 'datascience',
+  },
+
+  // 5. Data Structures & Computer Science
+  {
+    id: 'data-structures',
+    name: 'Data Structures',
+    category: 'cs_dsa',
+    categoryLabel: 'Data Structures & CS',
+    level: 'Familiar',
+    shortDescription: 'Arrays, linked lists, stacks, queues, trees & hashing',
+    iconType: 'dsa',
+  },
+  {
+    id: 'algorithms',
+    name: 'Algorithms',
+    category: 'cs_dsa',
+    categoryLabel: 'Data Structures & CS',
+    level: 'Learning',
+    shortDescription: 'Time & space complexity (Big-O), sorting, searching & recursion',
+    iconType: 'algo',
+  },
+  {
+    id: 'oop',
+    name: 'Object-Oriented Programming',
+    category: 'cs_dsa',
+    categoryLabel: 'Data Structures & CS',
+    level: 'Intermediate',
+    shortDescription: 'Encapsulation, inheritance, polymorphism, abstraction & classes',
+    iconType: 'oop',
+  },
+  {
+    id: 'problem-solving',
+    name: 'Problem Solving',
+    category: 'cs_dsa',
+    categoryLabel: 'Data Structures & CS',
+    level: 'Familiar',
+    shortDescription: 'Algorithmic thinking, test cases & competitive code practice',
+    iconType: 'problemsolving',
+  },
+
+  // 6. Tools & Technologies
+  {
+    id: 'git',
+    name: 'Git',
+    category: 'tools',
+    categoryLabel: 'Tools & Technologies',
+    level: 'Familiar',
+    shortDescription: 'Version tracking, commit history, branch creation & merges',
+    iconType: 'git',
+  },
+  {
+    id: 'github',
+    name: 'GitHub',
+    category: 'tools',
+    categoryLabel: 'Tools & Technologies',
+    level: 'Familiar',
+    shortDescription: 'Remote repository management, open-source workflow & collaboration',
+    iconType: 'github',
+  },
+  {
+    id: 'vscode',
+    name: 'VS Code',
+    category: 'tools',
+    categoryLabel: 'Tools & Technologies',
+    level: 'Intermediate',
+    shortDescription: 'Development environment, extensions, integrated terminal & debugging',
+    iconType: 'vscode',
+  },
+  {
+    id: 'colab',
+    name: 'Google Colab',
+    category: 'tools',
+    categoryLabel: 'Tools & Technologies',
+    level: 'Familiar',
+    shortDescription: 'Cloud Jupyter notebooks for machine learning experiments & GPU execution',
+    iconType: 'colab',
+  },
+  {
+    id: 'jupyter',
+    name: 'Jupyter Notebook',
+    category: 'tools',
+    categoryLabel: 'Tools & Technologies',
+    level: 'Familiar',
+    shortDescription: 'Interactive Python coding, markdown notes & data visual analysis',
+    iconType: 'jupyter',
+  },
+];
+
+export const CURRENTLY_LEARNING_LIST = [
+  {
+    name: 'React.js',
+    category: 'Web Frontend',
+    focus: 'Components, hooks, responsive states & SPA architecture',
+    icon: 'react',
+  },
+  {
+    name: 'Node.js',
+    category: 'Backend Runtime',
+    focus: 'Event-driven I/O, server scripts & npm ecosystem',
+    icon: 'nodejs',
+  },
+  {
+    name: 'Express.js',
+    category: 'Backend Framework',
+    focus: 'RESTful API routing, middleware & JSON services',
+    icon: 'express',
+  },
+  {
+    name: 'MongoDB',
+    category: 'NoSQL Database',
+    focus: 'Document modeling, collections & database integration',
+    icon: 'mongodb',
+  },
+  {
+    name: 'AI / ML',
+    category: 'Intelligent Systems',
+    focus: 'Machine learning algorithms, model training & Python libraries',
+    icon: 'ml',
+  },
+  {
+    name: 'Full-Stack Development',
+    category: 'Architecture',
+    focus: 'Uniting frontend, backend APIs, and persistent databases',
+    icon: 'fullstack',
+  },
+];
+
+export const EDUCATION_DATA: EducationInfo = {
+  institution: 'Marwadi University, Rajkot',
+  location: 'Rajkot, Gujarat, India',
+  degree: 'Bachelor of Technology (B.Tech)',
+  specialization: 'Computer Science and Engineering (Artificial Intelligence & Machine Learning)',
+  currentYear: 'Currently in 2nd Year',
+  cgpa: '8.5',
+  statusNote: 'Pursuing undergraduate degree with active coursework in core CS and AI/ML',
+};
+
+export const PROJECTS_DATA: ProjectItem[] = [
+  {
+    id: 'personal-portfolio',
+    title: 'Personal Portfolio Website',
+    badge: 'First Project',
+    description:
+      'This portfolio website is my first personal web development project. I built it to introduce myself, showcase my skills and certifications, and document my journey as a student aspiring to become a Full-Stack Developer and AI/ML Engineer.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Vite',
+      'Modern Responsive Web Design',
+    ],
+    githubUrl: 'https://github.com/gowthamthamarapalli',
+    keyHighlights: [
+      'Designed with modern dark developer aesthetics, subtle glassmorphism & responsive layouts',
+      'Structured modular architecture with clean separation of components and dynamic data',
+      'Smooth performance, accessible contrasts, and ready for one-click Vercel deployment',
+    ],
+  },
+];
+
+export const CERTIFICATIONS_DATA: CertificationItem[] = [
+  {
+    id: 'cisco-python',
+    title: 'Python Essentials 2',
+    issuer: 'Cisco Networking Academy',
+    issuerIcon: 'ShieldCheck',
+    focusArea: 'Object-Oriented Programming, Modules, Packages, File Processing & Exceptions in Python',
+  },
+  {
+    id: 'simplilearn-cert',
+    title: 'Simplilearn Certifications',
+    issuer: 'Simplilearn',
+    issuerIcon: 'Award',
+    focusArea: 'Professional technical foundation courses and industry-aligned skill building',
+  },
+];
+
+export const CAREER_JOURNEY: CareerJourneyStep[] = [
+  {
+    step: 1,
+    label: 'Learn',
+    subtitle: 'Mastering core programming, DSA, and AI/ML mathematical concepts',
+    isCurrent: true,
+  },
+  {
+    step: 2,
+    label: 'Build',
+    subtitle: 'Creating hands-on frontend & full-stack web applications',
+    isCurrent: true,
+  },
+  {
+    step: 3,
+    label: 'Improve',
+    subtitle: 'Refactoring code, optimizing algorithms & embracing peer feedback',
+  },
+  {
+    step: 4,
+    label: 'Deploy',
+    subtitle: 'Shipping production-ready websites and machine learning models to the cloud',
+  },
+  {
+    step: 5,
+    label: 'Grow',
+    subtitle: 'Evolving into an impactful Full-Stack Developer and AI/ML Engineer',
+  },
+];
